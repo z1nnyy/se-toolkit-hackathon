@@ -10,3 +10,5 @@ data/
 .env.bot
 backend/.pytest_cache/
 .tmp-images/
+
+*.egg-info/
