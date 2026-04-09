@@ -1,0 +1,22 @@
+[tool.uv.workspace]
+members = ["backend", "bot"]
+
+[dependency-groups]
+dev = [
+  "poethepoet>=0.30.0",
+  "pytest>=8.3.5",
+  "pytest-asyncio>=0.23.8",
+  "ruff>=0.12.0",
+]
+
+[tool.poe.tasks]
+backend = "uv run --package cava-backend python -m cava_backend.run"
+bot = { cmd = "uv run --package cava-bot python bot/bot.py", envfile = ".env.bot" }
+bot-test = { cmd = "uv run --package cava-bot python bot/bot.py --test '/menu'", envfile = ".env.bot" }
+test-unit = "uv run pytest backend/tests/unit"
+test-e2e = "uv run pytest backend/tests/e2e"
+
+[tool.pytest.ini_options]
+testpaths = ["backend/tests"]
+pythonpath = ["backend/src"]
+asyncio_mode = "auto"

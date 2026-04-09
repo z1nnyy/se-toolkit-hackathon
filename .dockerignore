@@ -1,0 +1,17 @@
+.git
+.pytest_cache
+.ruff_cache
+.tmp-images
+.venv
+**/__pycache__
+**/.DS_Store
+backend/.pytest_cache
+backend/.ruff_cache
+bot/__pycache__
+frontend/dist
+frontend/node_modules
+data
+.env
+.env.bot
+IMG_7077.HEIC
+IMG_7078.HEIC

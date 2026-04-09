@@ -1,0 +1,12 @@
+Metadata-Version: 2.4
+Name: cava-backend
+Version: 0.1.0
+Summary: Backend API for the Cava Menu Bot
+Requires-Python: >=3.9
+Requires-Dist: aiosqlite>=0.20.0
+Requires-Dist: fastapi<1.0.0,>=0.115.0
+Requires-Dist: greenlet>=3.1.1
+Requires-Dist: pillow>=11.0.0
+Requires-Dist: pydantic-settings>=2.4.0
+Requires-Dist: sqlmodel>=0.0.22
+Requires-Dist: uvicorn[standard]>=0.30.6

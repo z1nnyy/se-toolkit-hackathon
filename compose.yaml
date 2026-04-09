@@ -1,0 +1,36 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        VITE_API_BASE_URL: ""
+    env_file:
+      - .env
+      - .env.bot
+    environment:
+      CAVA_ADDRESS: 0.0.0.0
+      CAVA_PORT: 8000
+      CAVA_DATABASE_URL: sqlite+aiosqlite:///./data/cava-menu.db
+      CAVA_MENU_RENDER_CACHE_DIR: ./data/menu-render-cache
+      CAVA_CORS_ORIGINS: '["http://localhost:8000","http://127.0.0.1:8000"]'
+      MENU_API_BASE_URL: http://127.0.0.1:8000
+    ports:
+      - "8000:8000"
+    volumes:
+      - cava_data:/app/data
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health').read()",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+volumes:
+  cava_data:
