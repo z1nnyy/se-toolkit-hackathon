@@ -1,0 +1,42 @@
+services:
+  - type: web
+    name: cava-menu-bot
+    runtime: docker
+    plan: starter
+    region: frankfurt
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    envVars:
+      - key: CAVA_ADDRESS
+        value: 0.0.0.0
+      - key: CAVA_PORT
+        value: "10000"
+      - key: CAVA_DEBUG
+        value: "false"
+      - key: CAVA_RELOAD
+        value: "false"
+      - key: CAVA_CORS_ORIGINS
+        value: '["*"]'
+      - key: CAVA_DATABASE_URL
+        value: sqlite+aiosqlite:////var/data/cava-menu.db
+      - key: CAVA_MENU_RENDER_CACHE_DIR
+        value: /var/data/menu-render-cache
+      - key: CAVA_SEED_DEMO_DATA
+        value: "true"
+      - key: CAVA_AUTH_SESSION_HOURS
+        value: "12"
+      - key: CAVA_SUPERADMIN_USERNAME
+        value: owner
+      - key: CAVA_SUPERADMIN_FULL_NAME
+        value: Main Administrator
+      - key: CAVA_SUPERADMIN_PASSWORD
+        sync: false
+      - key: MENU_API_BASE_URL
+        value: http://127.0.0.1:10000
+      - key: MENU_REQUEST_TIMEOUT
+        value: "10"
+      - key: BOT_TOKEN
+        sync: false
+    disk:
+      name: data
+      mountPath: /var/data

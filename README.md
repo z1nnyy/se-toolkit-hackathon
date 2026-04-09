@@ -118,6 +118,20 @@ During busy hours people often have to walk to the cafe counter just to see what
    docker compose down
    ```
 
+### Render deployment
+
+The repository also includes [render.yaml](/Users/z1nny/software-engineering-toolkit/se-toolkit-hackathon/render.yaml) for Render deployment.
+
+Quick path:
+
+1. Push this repository to GitHub.
+2. In Render, create a new `Blueprint`.
+3. Select this repository.
+4. Fill in the secret values for `BOT_TOKEN` and `CAVA_SUPERADMIN_PASSWORD`.
+5. Deploy and wait for the first build to finish.
+
+Render gives you a public `onrender.com` URL. That URL is your deployment URL.
+
 ### Notes
 
 - The backend serves the built frontend from the same container.
@@ -131,3 +145,4 @@ During busy hours people often have to walk to the cafe counter just to see what
 - [Demo script](docs/demo-script.md)
 - [Submission checklist](docs/submission-checklist.md)
 - [Lab 9 requirements copy](docs/lab-9-requirements.md)
+- [Render deployment guide](docs/render-deploy.md)

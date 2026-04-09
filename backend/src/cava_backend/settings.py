@@ -1,4 +1,4 @@
-from pydantic import Field
+from pydantic import AliasChoices, Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -6,7 +6,10 @@ class Settings(BaseSettings):
     app_name: str = Field(default="Cava Menu API", alias="CAVA_NAME")
     debug: bool = Field(default=False, alias="CAVA_DEBUG")
     address: str = Field(default="127.0.0.1", alias="CAVA_ADDRESS")
-    port: int = Field(default=8000, alias="CAVA_PORT")
+    port: int = Field(
+        default=8000,
+        validation_alias=AliasChoices("CAVA_PORT", "PORT"),
+    )
     reload: bool = Field(default=False, alias="CAVA_RELOAD")
 
     cors_origins: list[str] = Field(
